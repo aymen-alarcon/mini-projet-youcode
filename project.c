@@ -59,40 +59,40 @@ int main(){
                     for (int g = 0; g < 4; g++) {
                         printf("Enter grade %d: ", g + 1);
                         scanf("%f", &class[index].grade[g]);
-
-                        class[index].average = class[index].grade[g] / 4;
-                        printf("Partial value for averaging: %.2f\n", class[index].average);
                     }
                 }
                 goto debut;
                 break;
             case 3 :
-                for (int i = 0; i < search; i++) {
+                for (int i = 0; i < studentCount; i++) {
                     printf("ID: %d | first name: %s | last name:  %s | ", class[i].id, class[i].firstname, class[i].lastname);
                     for (int g = 0; g < 4; g++) {
-                        printf("%.2f ", class[i].grade[g]);
+                        printf("[%.2f] ", class[i].grade[g]);
+                        class_average = class_average + class[i].grade[g];
                     }
+                    printf("%.2f\n", class_average);
                     printf("\n");
                 }   
                 goto debut;
                 break;
             case 4 :
-                printf("could you please specify which students grade(by entering his ID). if you want all just enter 0");
-                scanf("%d", &search);                int index = -1;
+                printf("could you please specify which students grade(by entering his ID)");
+                scanf("%d", &search);                
+                    int ind = -1;
                     for (int i = 0; i < studentCount; i++) {
                         if (class[i].id == search) {
-                            index = i;
+                            ind = i;
                             break;
                         }
                     }
 
-                    if (index == -1) {
+                    if (ind == -1) {
                         printf("Student not found!\n");
                     } else {
                         for (int g = 0; g < 4; g++) {
-                            printf("display %d: ", g + 1);
-                            scanf("%.2f\n", &class[index].grade[g]);
+                            printf("note %d : %.2f\n", g + 1, class[ind].grade[g]);
                         }
+                        printf("%.2f\n", class[ind].average);
                     }
                     goto debut;
                 break;
