@@ -14,7 +14,9 @@ int main(){
     int size = sizeof(class) / sizeof(class[0]);
     int search;
     int studentCount = 0; 
-    int class_average;
+    float class_average = 0;
+    float sum = 0;
+
     do{
         debut:
         printf("\nHello! What would you like to do today?\n");
@@ -59,18 +61,23 @@ int main(){
                     for (int g = 0; g < 4; g++) {
                         printf("Enter grade %d: ", g + 1);
                         scanf("%f", &class[index].grade[g]);
+                        sum = sum + class[index].grade[g];
                     }
+                    class[index].average = sum / 4;
+                    printf("%.2f\n", class[index].average);
                 }
                 goto debut;
                 break;
-            case 3 :
+                case 3 :
                 for (int i = 0; i < studentCount; i++) {
                     printf("ID: %d | first name: %s | last name:  %s | ", class[i].id, class[i].firstname, class[i].lastname);
                     for (int g = 0; g < 4; g++) {
                         printf("[%.2f] ", class[i].grade[g]);
-                        class_average = class_average + class[i].grade[g];
-                    }
-                    printf("%.2f\n", class_average);
+                        sum = sum + class[index].grade[g];
+                    }                    
+                    
+                    class[index].average = sum / 4;
+                    printf("%.2f\n", class[index].average);
                     printf("\n");
                 }   
                 goto debut;
@@ -96,14 +103,20 @@ int main(){
                     }
                     goto debut;
                 break;
-                case 5 :
-                    for (int i = 0; i < size; i++)
-                    {
-                        class_average = class[index].average / size;
+                case 5:
+                    if (studentCount == 0) {
+                        printf("No students to calculate average.\n");
+                    } else {
+                        float total = 0;
+                        for (int i = 0; i < studentCount; i++) {
+                            total += class[i].average;
+                        }
+                        float class_average = total / studentCount;
+                        printf("Class average: %.2f\n", class_average);
                     }
-                    printf("%.2f", class_average);
+                
+                    goto debut;
                 break;
         }
-    } while (choice != 0);
-    
+    }while (choice != 0);
 }
