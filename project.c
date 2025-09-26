@@ -6,7 +6,7 @@ int afficherEtudiants();
 int calculerMoyenneEtudiant();
 int saisirNotes();
 int ajouterEtudiant();
-// files(prototypes, service menu) ; optimization; mysql
+// files(prototypes, service menu) ; optimization; mysql delete and update
 struct student{
     int id;
     char firstname[10];
