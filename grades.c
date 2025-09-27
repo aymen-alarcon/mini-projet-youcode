@@ -2,6 +2,7 @@
 #include "student.h"
 
 int search;
+float sum = 0;
 
 void saisirNotes() {
     if (studentCount == 0) {
@@ -26,7 +27,6 @@ void saisirNotes() {
         return;
     }
 
-    float sum = 0;
     for (int g = 0; g < 4; g++) {
         do {
             printf("Enter grade %d: ", g + 1);
@@ -85,7 +85,8 @@ void calculerMoyenneGenerale() {
     printf("Class average: %.2f\n", total / studentCount);
 }
 
-void deleletstudentsgrade(){
+void deleletStudentAllGrades(){
+    int found = 0;
     printf("can you please enter the ID of the student you wish to delete");
     scanf("%d", &search);
     
@@ -93,17 +94,54 @@ void deleletstudentsgrade(){
     {
         if (class[i].id == search)
         {
+            found = 1;
             for (int j = 0; j < 4; j++)
             {
-                
+                class[i].grade[j] = 0;
             }
-            
+            class[i].average = 0;
         }
-        else
-        {
-            /* code */
-        }
-        
     }
-    
+    if (found == 0)
+    {
+        printf("Sorry there is no student with that id");
+    }
+}
+
+void deleteStudentsGrade() {
+    int search;
+    int gradesearch;
+    int found = 0;
+    float sum = 0;
+
+    printf("Enter the ID of the student: ");
+    scanf("%d", &search);
+
+    for (int i = 0; i < studentCount; i++) {
+        if (class[i].id == search) {
+            found = 1;
+            printf("Enter the grade number to delete (1-4): ");
+            scanf("%d", &gradesearch);
+
+            if (gradesearch < 1 || gradesearch > 4) {
+                printf("Invalid grade number!\n");
+                return;
+            }
+
+            int index = gradesearch - 1;
+            class[i].grade[index] = 0;
+
+            for (int j = 0; j < 4; j++) {
+                sum += class[i].grade[j];
+            }
+            class[i].average = sum / 4;
+
+            printf("Updated average for %s: %.2f\n", class[i].firstname, class[i].average);
+            break;
+        }
+    }
+
+    if (found = 0) {
+        printf("No student found with ID %d\n", search);
+    }
 }

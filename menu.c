@@ -11,6 +11,10 @@ void showMenu() {
         printf("3. Display all students\n");
         printf("4. Display student bulletin\n");
         printf("5. Calculate class average\n");
+        printf("6. Delete a Students Grades\n");
+        printf("7. Delete one grade for a student\n");
+        printf("8. Delete a student\n");
+        printf("9. Delete all students\n");
         printf("0. Exit\n");
         printf("Your choice: ");
         scanf("%d", &choice);
@@ -30,6 +34,18 @@ void showMenu() {
             break;
             case 5: 
                 calculerMoyenneGenerale(); 
+            break;
+            case 6: 
+                deleletStudentAllGrades();
+            break;
+            case 7: 
+                deleteStudentsGrade(); 
+            break;
+            case 8: 
+                deleteStudent();
+            break;
+            case 9: 
+                deleteAllStudents();
             break;
             case 0: 
                 printf("Exiting...\n"); 

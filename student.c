@@ -63,8 +63,8 @@ void deleteStudent(){
 void deleteAllStudents(){
     char answer;
     printf("are you sure:!!!(Y/N)");
-    scanf("%c", &answer);
-    if (answer == "Y" || answer == "y")
+    scanf(" %c", &answer);
+    if (answer == 'Y' || answer == 'y')
     {
         studentCount = 0;
         printf("fuck you then");
