@@ -14,5 +14,7 @@ extern int studentCount;
 
 void ajouterEtudiant();
 void afficherEtudiants();
+void deleteStudent();
+void deleteAllStudents();
 
 #endif

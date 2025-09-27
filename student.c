@@ -36,3 +36,37 @@ void afficherEtudiants() {
         printf("%.2f] | Average: %.2f\n", class[i].grade[3], class[i].average);
     }
 }
+
+void deleteStudent(){
+    int search;
+    printf("can you please enter the ID of the student you wish to delete");
+    scanf("%d", &search);
+
+    for (int i = 0; i < studentCount; i++)
+    {
+        if (class[i].id == search)
+        {
+            for (int j = i; j < studentCount - 1; j++) {
+                class[j] = class[j + 1];
+            }
+            studentCount--;
+            printf("Student with ID %d has been deleted.\n", search);
+            break;
+        }
+        else
+        {
+            printf("No student found with ID %d.\n", search);
+        }
+    }
+}
+    
+void deleteAllStudents(){
+    char answer;
+    printf("are you sure:!!!(Y/N)");
+    scanf("%c", &answer);
+    if (answer == "Y" || answer == "y")
+    {
+        studentCount = 0;
+        printf("fuck you then");
+    }   
+}

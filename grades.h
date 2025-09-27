@@ -4,5 +4,8 @@
 void saisirNotes();
 void afficherBulletin();
 void calculerMoyenneGenerale();
+void deletestudentsgrades();
+void deletestudentsgrade();
 
 #endif
+

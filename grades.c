@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "student.h"
 
+int search;
+
 void saisirNotes() {
     if (studentCount == 0) {
         printf("No students available.\n");
@@ -46,7 +48,6 @@ void afficherBulletin() {
         return;
     }
 
-    int search;
     printf("Enter student ID: ");
     scanf("%d", &search);
 
@@ -82,4 +83,27 @@ void calculerMoyenneGenerale() {
     }
 
     printf("Class average: %.2f\n", total / studentCount);
+}
+
+void deleletstudentsgrade(){
+    printf("can you please enter the ID of the student you wish to delete");
+    scanf("%d", &search);
+    
+    for (int i = 0; i < studentCount; i++)
+    {
+        if (class[i].id == search)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                
+            }
+            
+        }
+        else
+        {
+            /* code */
+        }
+        
+    }
+    
 }
