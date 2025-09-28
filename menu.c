@@ -15,6 +15,9 @@ void showMenu() {
         printf("7. Delete one grade for a student\n");
         printf("8. Delete a student\n");
         printf("9. Delete all students\n");
+        printf("10. Update a student's info \n");
+        printf("11. update student's grade \n");
+        printf("12. update all of a specific student's grade \n");
         printf("0. Exit\n");
         printf("Your choice: ");
         scanf("%d", &choice);
@@ -46,6 +49,15 @@ void showMenu() {
             break;
             case 9: 
                 deleteAllStudents();
+            break;
+            case 10: 
+                updateStudent();
+            break;
+            case 11: 
+                updateStudentsGrade();
+            break;
+            case 12: 
+                UpdateStudentAllGrades();
             break;
             case 0: 
                 printf("Exiting...\n"); 

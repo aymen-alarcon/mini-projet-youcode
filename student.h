@@ -16,5 +16,6 @@ void ajouterEtudiant();
 void afficherEtudiants();
 void deleteStudent();
 void deleteAllStudents();
+void updateStudent();
 
 #endif

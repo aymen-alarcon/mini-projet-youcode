@@ -6,6 +6,8 @@ void afficherBulletin();
 void calculerMoyenneGenerale();
 void deleletStudentAllGrades();
 void deleteStudentsGrade();
+void updateStudentsGrade();
+void UpdateStudentAllGrades();
 
 #endif
 
