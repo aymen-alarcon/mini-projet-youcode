@@ -5,28 +5,7 @@ int search;
 float sum = 0;
 
 void saisirNotes() {
-    if (studentCount == 0) {
-        printf("No students available.\n");
-        return;
-    }
-
-    int search;
-    printf("Enter student ID to add grades: ");
-    scanf("%d", &search);
-
-    int index = -1;
-    for (int i = 0; i < studentCount; i++) {
-        if (class[i].id == search) {
-            index = i;
-            break;
-        }
-    }
-
-    if (index == -1) {
-        printf("Student not found!\n");
-        return;
-    }
-
+    int index = searchStudents();
     for (int g = 0; g < 4; g++) {
         do {
             printf("Enter grade %d: ", g + 1);
@@ -43,32 +22,12 @@ void saisirNotes() {
 }
 
 void afficherBulletin() {
-    if (studentCount == 0) {
-        printf("No students available.\n");
-        return;
-    }
-
-    printf("Enter student ID: ");
-    scanf("%d", &search);
-
-    int ind = -1;
-    for (int i = 0; i < studentCount; i++) {
-        if (class[i].id == search) {
-            ind = i;
-            break;
-        }
-    }
-
-    if (ind == -1) {
-        printf("Student not found!\n");
-        return;
-    }
-
-    printf("\nBulletin for %s %s:\n", class[ind].firstname, class[ind].lastname);
+    int index = searchStudents();
+    printf("\nBulletin for %s %s:\n", class[index].firstname, class[index].lastname);
     for (int g = 0; g < 4; g++) {
-        printf("Grade %d: %.2f\n", g + 1, class[ind].grade[g]);
+        printf("Grade %d: %.2f\n", g + 1, class[index].grade[g]);
     }
-    printf("Average: %.2f\n", class[ind].average);
+    printf("Average: %.2f\n", class[index].average);
 }
 
 void calculerMoyenneGenerale() {
@@ -86,26 +45,12 @@ void calculerMoyenneGenerale() {
 }
 
 void deleletStudentAllGrades(){
-    int found = 0;
-    printf("can you please enter the ID of the student you wish to delete");
-    scanf("%d", &search);
-    
-    for (int i = 0; i < studentCount; i++)
+    int index = searchStudents();
+    for (int j = 0; j < 4; j++)
     {
-        if (class[i].id == search)
-        {
-            found = 1;
-            for (int j = 0; j < 4; j++)
-            {
-                class[i].grade[j] = 0;
-            }
-            class[i].average = 0;
-        }
+        class[index].grade[j] = 0;
     }
-    if (found == 0)
-    {
-        printf("Sorry there is no student with that id");
-    }
+    class[index].average = 0;
 }
 
 void UpdateStudentAllGrades(){

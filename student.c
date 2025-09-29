@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 #include "student.h"
-
+ 
 struct student class[30];
 int studentCount = 0;
+
 
 void ajouterEtudiant() {
     if (studentCount >= 30) {
@@ -21,12 +23,12 @@ void ajouterEtudiant() {
     printf("Student added successfully!\n");
 }
 
+
 void afficherEtudiants() {
     if (studentCount == 0) {
         printf("No students to display.\n");
         return;
     }
-
     for (int i = 0; i < studentCount; i++) {
         printf("ID: %d | First name: %s | Last name: %s | Grades: [",
                class[i].id, class[i].firstname, class[i].lastname);
@@ -38,38 +40,16 @@ void afficherEtudiants() {
 }
 
 void deleteStudent(){
-    int search;
-    printf("can you please enter the ID of the student you wish to delete");
-    scanf("%d", &search);
-
-    for (int i = 0; i < studentCount; i++)
-    {
-        if (class[i].id == search)
-        {
-            for (int j = i; j < studentCount - 1; j++) {
-                class[j] = class[j + 1];
-            }
-            studentCount--;
-            printf("Student with ID %d has been deleted.\n", search);
-            break;
-        }
-        else
-        {
-            printf("No student found with ID %d.\n", search);
-        }
+    int index = searchStudents();
+    for (int j = index; j < studentCount - 1; j++) {
+        class[j] = class[j + 1];
     }
+    studentCount--;
 }
 
 void updateStudent(){
-    int search;
+    int index  = searchStudents();
     int updatechoice;
-    printf("can you please enter the ID of the student you wish to update");
-    scanf("%d", &search);
-
-    for (int i = 0; i < studentCount; i++)
-    {
-        if (class[i].id == search)
-        {
             printf("please enter the what do you want to edit\n");
             printf("1. to update the first name\n");
             printf("2. to update the last name\n");
@@ -79,28 +59,20 @@ void updateStudent(){
             {
             case 1 :
                 printf("please enter the new first name ");
-                scanf("%s", &class[i].firstname);
+                scanf("%s", &class[index].firstname);
             break;
             case 2 :
                 printf("please enter the new last name ");
-                scanf("%s", &class[i].lastname);
+                scanf("%s", &class[index].lastname);
             break;
             case 3 :
                 printf("please enter the new ID ");
-                scanf("%d", &class[i].id);
+                scanf("%d", &class[index].id);
             break;
             default:
             break;
             }
-            printf("Student with ID %d has been updated.\n", search);
-            break;
         }
-        else
-        {
-            printf("No student found with ID %d.\n", search);
-        }
-    }
-}
     
 void deleteAllStudents(){
     char answer;
