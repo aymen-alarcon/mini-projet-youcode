@@ -12,7 +12,19 @@ void ajouterEtudiant() {
         return;
     }
 
-    printf("Enter student's ID: ");
+    main();
+    printf("Please enter your id");
+
+    const char *sql_insert =
+        "INSERT INTO Students (id, Name, Grade) VALUES ('Alice', 17.5);";
+
+    rc = sqlite3_exec(db, sql_insert, 0, 0, &err_msg);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "SQL error: %s\n", err_msg);
+        sqlite3_free(err_msg);
+        sqlite3_close(db);
+        return 1;
+    }
     scanf("%d", &class[studentCount].id);
     printf("Enter first name: ");
     scanf("%s", class[studentCount].firstname);

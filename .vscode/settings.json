@@ -1,7 +1,9 @@
 {
     "files.associations": {
         "ctype.h": "c",
-        "grades.h": "c"
+        "grades.h": "c",
+        "stdio.h": "c",
+        "sqlite3.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
